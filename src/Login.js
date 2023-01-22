@@ -10,10 +10,10 @@ const loginUser = gql`
         }
     }
 `;
-const LoginPage = ({history}) => (
+const LoginPage = ({history, refetch}) => (
     <div>
         <h2>Login</h2>
-        <LoginForm history={history}/>
+        <LoginForm history={history} refetch={refetch}/>
     </div>
 )
 
@@ -37,8 +37,9 @@ class LoginForm extends Component {
                 username: this.state.username,
                 password: this.state.password
             }
-        }).then(({data}) => {
+        }).then(async ({data}) => {
             localStorage.setItem('token', data.login.token);
+            await this.props.refetch();
             this.props.history.push('/profile');
         }).catch(error => console.error(error));
     }

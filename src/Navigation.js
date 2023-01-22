@@ -7,11 +7,15 @@ const NavigationNoAuth = () => (
         <li><Link to="/register">Register</Link></li>
     </ul>
 );
-const NavigationWithAuth = () => {
-};
-const Navigation = () => (
+const NavigationWithAuth = () => (
+    <ul>
+        <li><Link to="/profile">Profile</Link></li>
+    </ul>
+);
+const Navigation = ({session}) => (
     <div>
-        <NavigationNoAuth/>
+        {session && session.me ?
+            <NavigationWithAuth/> : <NavigationNoAuth/>}
     </div>
 
 );
