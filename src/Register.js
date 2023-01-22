@@ -40,7 +40,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const validForm =
+    const validForm = 
       this.state.name !== '' &&
       this.state.username !== '' &&
       this.state.password !== '';
