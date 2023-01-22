@@ -6,6 +6,7 @@ import LoginPage from "./Login";
 import RegisterPage from "./Register";
 import ProfilePage from "./Profile";
 import activeSession from "./ActiveSession";
+import LogoutPage from "./Logout";
 
 class App extends Component {
     render() {
@@ -19,6 +20,8 @@ class App extends Component {
                     <Route path="/register" component={RegisterPage}/>
                     <Route path="/profile" component={() => this.props.session && this.props.session.me === null ?
                         <Redirect to="/login"/> : <ProfilePage/>}/>
+                    <Route path="/logout" component={() => this.props.session && this.props.session.me === null ?
+                        <Redirect to="/login"/> : <LogoutPage/>}/>
                 </React.Fragment>
             </Router>
         );
